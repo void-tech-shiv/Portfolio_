@@ -89,7 +89,7 @@ function App() {
       <Layout>
         <ScrollToTop />
         <AnimatePresence mode="wait">
-          <Routes key={location.pathname}>
+          <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><Hero /></PageTransition>} />
           <Route path="/about" element={<PageTransition><About /></PageTransition>} />
           <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
