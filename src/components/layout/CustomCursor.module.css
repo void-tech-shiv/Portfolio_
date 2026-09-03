@@ -1,0 +1,33 @@
+.cursorDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+}
+
+.cursorRing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-accent-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+}
+
+/* Hide default cursor only if not a touch device (handled in JS, but fallback CSS is okay) */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button {
+    cursor: none;
+  }
+}

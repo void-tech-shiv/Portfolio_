@@ -1,0 +1,17 @@
+.panel {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-left: 2px solid var(--color-glass-border);
+  transition: all var(--transition-normal);
+}
+
+.panel:hover {
+  border-left-color: var(--color-accent-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.content {
+  padding: 1.5rem;
+}

@@ -1,0 +1,189 @@
+.section {
+  padding: 8rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 6rem;
+}
+
+.skillsArea {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.categoryTitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent-primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-glass-border);
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skillNode {
+  background: var(--color-surface);
+  border: 1px solid var(--color-glass-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+  cursor: crosshair;
+  transition: all var(--transition-fast);
+}
+
+.skillNode:hover, .activeNode {
+  background: var(--color-accent-primary-dim);
+  border-color: var(--color-accent-primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* HUD Area */
+.hudArea {
+  position: relative;
+}
+
+.hudPanel {
+  position: sticky;
+  top: 120px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important; /* Override GlassCard default padding */
+}
+
+.hudHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-glass-border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.hudLabel {
+  color: var(--color-text-secondary);
+}
+
+.hudStatus {
+  color: var(--color-accent-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hudStatus::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+}
+
+.hudContent {
+  flex-grow: 1;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+.hudTitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.hudTitle span {
+  color: #fff;
+  font-size: 1.25rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.hudSubtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-secondary);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.hudProjects {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hudProjects li {
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  font-weight: 300;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--color-accent-primary);
+}
+
+.hudEmpty {
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.hudIdle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.hudGrid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .hudPanel {
+    position: relative;
+    top: 0;
+    height: 300px;
+  }
+}
