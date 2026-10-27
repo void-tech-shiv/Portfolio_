@@ -1,0 +1,26 @@
+name: Portfolio quality checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: TypeScript and production build
+        run: npm run build
+      - name: Dependency security audit (diagnostic)
+        run: npm audit --audit-level=high
+
+      - name: Verify built SEO pages
+        run: node scripts/check-dist.mjs

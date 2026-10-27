@@ -27,7 +27,7 @@ export const Projects: React.FC = () => {
         
         <p className={styles.sectionDesc}>
           A selection of software systems, applications and engineering projects built by Shivanshu.
-          <span className={styles.projectCount}>04 PROJECTS</span>
+          <span className={styles.projectCount}>{filteredProjects.length} PROJECT{filteredProjects.length !== 1 ? "S" : ""}</span>
         </p>
 
         <div className={styles.filters}>
@@ -35,6 +35,7 @@ export const Projects: React.FC = () => {
             <button 
               key={cat}
               className={clsx(styles.filterBtn, filter === cat && styles.activeFilter)}
+              aria-pressed={filter === cat}
               onClick={() => setFilter(cat)}
             >
               {cat}

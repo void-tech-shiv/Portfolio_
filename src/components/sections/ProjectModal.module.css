@@ -202,3 +202,5 @@
     width: 100%;
   }
 }
+
+@media(max-width:768px){.heroImageContainer{height:180px;}.modal{height:calc(100dvh - 1rem);}.body{gap:1.25rem;}}

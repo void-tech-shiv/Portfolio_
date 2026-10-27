@@ -225,3 +225,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.cardFooter{display:flex;flex-wrap:wrap;gap:.55rem;}
+.viewAction{display:inline-flex;align-items:center;gap:.35rem;cursor:pointer;min-height:40px;color:var(--color-accent-primary);font:500 .72rem var(--font-mono);padding:.3rem .6rem;border-radius:6px;}
+.viewAction:hover,.viewAction:focus-visible{background:var(--color-accent-primary-dim);}
