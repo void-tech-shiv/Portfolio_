@@ -18,7 +18,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({ title, number }) =
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <span className={styles.accentBlock} />
-        <span className={styles.title}>{title}</span>
+        <h1 className={styles.title}>{title}</h1>
         <span className={styles.separator}>/</span>
         <span className={styles.number}>{number}</span>
         <span className={styles.techLabel}>SYS.MODULE</span>
