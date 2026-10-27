@@ -8,7 +8,7 @@ const root=fs.readFileSync('dist/index.html','utf8');
 assert.ok(root.includes('meta name="description"'),'Homepage description missing');
 for(const page of routes) {
   const html=fs.readFileSync('dist/'+page.route+'/index.html','utf8');
-  assert.ok(html.includes('<title>'+page.title+'</title>'),'Title missing: '+page.route);
+  assert.ok(html.includes('<title>'+page.title.replaceAll('&','&amp;')+'</title>'),'Title missing: '+page.route);
   assert.ok(html.includes('rel="canonical" href="https://itsupportshiv.vercel.app/'+page.route+'"'),'Canonical missing: '+page.route);
 }
 console.log('Static SEO pages and assets verified');

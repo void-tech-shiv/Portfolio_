@@ -21,5 +21,11 @@ jobs:
         run: npm run build
       - name: Dependency security audit (diagnostic)
         run: npm audit --audit-level=high || true
+      - name: Generate security-patched lockfile for review
+        run: |
+          npm audit fix --package-lock-only
+          echo 'PORTFOLIO_LOCKFILE_BEGIN'
+          cat package-lock.json
+          echo 'PORTFOLIO_LOCKFILE_END'
       - name: Verify built SEO pages
         run: node scripts/check-dist.mjs
