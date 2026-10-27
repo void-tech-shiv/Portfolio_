@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, MoveDown, Layers3, ShieldCheck, BrainCircuit, Github, Mail } from 'lucide-react';
+import { ArrowUpRight, MoveDown, Layers3, ShieldCheck, BrainCircuit, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa6';
 import { Avatar3D } from './Avatar3D';
 import styles from './Hero.module.css';
 
@@ -68,7 +69,7 @@ export const Hero = () => (
       <p>Looking for a developer who loves figuring things out? Let's talk.</p>
       <div className={styles.ctaLinks}>
         <Link className={styles.primary} to="/contact">START A CONVERSATION <ArrowUpRight size={18}/></Link>
-        <a href="https://github.com/void-tech-shiv" rel="noopener noreferrer" target="_blank" className={styles.secondary}>GITHUB <Github size={18}/></a>
+        <a href="https://github.com/void-tech-shiv" rel="noopener noreferrer" target="_blank" className={styles.secondary}>GITHUB <FaGithub size={18}/></a>
       </div>
     </section>
   </>

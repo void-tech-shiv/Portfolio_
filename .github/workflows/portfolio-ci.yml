@@ -19,5 +19,7 @@ jobs:
         run: npm run lint
       - name: TypeScript and production build
         run: npm run build
+      - name: Dependency security audit (diagnostic)
+        run: npm audit --audit-level=high || true
       - name: Verify built SEO pages
         run: node scripts/check-dist.mjs
