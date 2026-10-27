@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Search, ArrowUpRight, Command } from 'lucide-react';
 import styles from './CommandPalette.module.css';
 
@@ -17,7 +17,6 @@ export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
   const searchRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -29,7 +28,6 @@ export function CommandPalette() {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
-  useEffect(() => { setOpen(false); }, [location.pathname]);
   useEffect(() => {
     if (open) { searchRef.current?.focus(); document.body.style.overflow = 'hidden'; }
     return () => { document.body.style.overflow = ''; };

@@ -3,17 +3,12 @@ import { Palette, Waves, VolumeX } from 'lucide-react';
 import styles from './ExperienceControls.module.css';
 
 export function ExperienceControls() {
-  const [violet, setViolet] = useState(false);
-  const [reduced, setReduced] = useState(false);
+  const [violet, setViolet] = useState(() => localStorage.getItem('portfolio-accent') === 'violet');
+  const [reduced, setReduced] = useState(() => localStorage.getItem('portfolio-motion') === 'reduce' || (!localStorage.getItem('portfolio-motion') && window.matchMedia('(prefers-reduced-motion: reduce)').matches));
   useEffect(() => {
-    const initialViolet = localStorage.getItem('portfolio-accent') === 'violet';
-    const initialReduced = localStorage.getItem('portfolio-motion') === 'reduce' ||
-      (!localStorage.getItem('portfolio-motion') && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    setViolet(initialViolet);
-    setReduced(initialReduced);
-    document.documentElement.dataset.accent = initialViolet ? 'violet' : 'cyan';
-    document.documentElement.dataset.reduceMotion = String(initialReduced);
-  }, []);
+    document.documentElement.dataset.accent = violet ? 'violet' : 'cyan';
+    document.documentElement.dataset.reduceMotion = String(reduced);
+  }, [violet, reduced]);
   function changeAccent() {
     const value = !violet;
     setViolet(value);

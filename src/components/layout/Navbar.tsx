@@ -16,10 +16,9 @@ export const Navbar = () => {
   const location = useLocation();
   useEffect(() => {
     const listener = () => setScrolled(window.scrollY > 50);
-    listener();window.addEventListener('scroll', listener, {passive:true});
+    window.addEventListener('scroll', listener, {passive:true});
     return () => window.removeEventListener('scroll', listener);
   }, []);
-  useEffect(() => setOpen(false), [location.pathname]);
   useEffect(() => {
     if(!open)return;
     const previous = document.body.style.overflow;
