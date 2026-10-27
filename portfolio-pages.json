@@ -1,0 +1,32 @@
+[
+  {
+    "route": "about",
+    "title": "About Shivanshu Satyajeet",
+    "description": "Meet Shivanshu Satyajeet, a B.Tech AI & Data Science student building useful software systems."
+  },
+  {
+    "route": "projects",
+    "title": "Software, AI & Security Projects — Shivanshu",
+    "description": "Explore software engineering, security, AI/ML and full-stack web projects by Shivanshu Satyajeet."
+  },
+  {
+    "route": "experience",
+    "title": "Experience — Shivanshu Satyajeet",
+    "description": "Engineering projects, technical leadership and real-world development responsibilities."
+  },
+  {
+    "route": "skills",
+    "title": "Technical Skills — Shivanshu Satyajeet",
+    "description": "Discover web development, software engineering, AI/ML and security skills."
+  },
+  {
+    "route": "certifications",
+    "title": "Certifications — Shivanshu Satyajeet",
+    "description": "Professional learning and technical certificate previews with verification links when available."
+  },
+  {
+    "route": "contact",
+    "title": "Contact Shivanshu Satyajeet",
+    "description": "Reach out to collaborate with Shivanshu on software, AI, web development and security projects."
+  }
+]

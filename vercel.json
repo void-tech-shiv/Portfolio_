@@ -2,27 +2,27 @@
   "rewrites": [
     {
       "source": "/about",
-      "destination": "/index.html"
+      "destination": "/about/index.html"
     },
     {
       "source": "/projects",
-      "destination": "/index.html"
+      "destination": "/projects/index.html"
     },
     {
       "source": "/experience",
-      "destination": "/index.html"
+      "destination": "/experience/index.html"
     },
     {
       "source": "/skills",
-      "destination": "/index.html"
+      "destination": "/skills/index.html"
     },
     {
       "source": "/certifications",
-      "destination": "/index.html"
+      "destination": "/certifications/index.html"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/contact/index.html"
     }
   ]
 }
