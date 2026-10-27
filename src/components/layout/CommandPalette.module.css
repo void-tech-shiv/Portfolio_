@@ -13,3 +13,8 @@
 .results p { padding: 1rem; color: #9aa3b2; }
 .help { padding: .8rem 1.2rem; border-top: 1px solid #ffffff14; color: #9aa3b2; font-size: .72rem; }
 @media(max-width:768px) { .trigger { bottom: .9rem; right: .7rem; } .trigger span,.trigger kbd { display: none; } }
+
+@media (max-width: 1199px) {
+  .trigger { right: max(.65rem,env(safe-area-inset-right)); bottom: max(.65rem,env(safe-area-inset-bottom)); width: 44px; height: 44px; padding: 0; display: grid; place-items: center; border-radius: 50%; }
+  .trigger span,.trigger kbd { display: none; }
+}

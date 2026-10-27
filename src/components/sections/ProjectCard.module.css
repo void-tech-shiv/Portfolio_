@@ -199,3 +199,17 @@
 .card .footer{margin-top:auto;}
 .actions{flex-wrap:wrap;gap:.4rem;}
 .actionBtn{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;}
+
+@media (max-width: 1199px) {
+  .card { cursor: auto; }
+  .card .footer { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .stack { gap: .4rem; }
+  .actions { margin-top: 0; display: flex; gap: .55rem; width: 100%; flex-wrap: wrap; }
+  .actionBtn { min-height: 42px; padding: .65rem .85rem; font-size: .75rem; }
+  .content { padding: 1.25rem; }
+  .description { margin-bottom: 1.4rem; }
+}
+@media (max-width: 600px) {
+  .title { font-size: 1.9rem; }
+  .imageContainer,.imagePlaceholder { height: 185px; }
+}

@@ -62,3 +62,10 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 1199px) {
+  .headerContainer { margin-bottom: 2rem; }
+  .header { flex-wrap: wrap; gap: .65rem; font-size: 1rem; }
+  .title { font-size: clamp(1.9rem,3.5vw,2.4rem); }
+  .techLabel { margin-left: .1rem; }
+}

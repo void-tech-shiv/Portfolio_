@@ -40,3 +40,80 @@
 @media(max-width:1100px){.journey{grid-template-columns:minmax(0,1fr) minmax(300px,.85fr);gap:2rem;padding:0 2rem;}.title{font-size:clamp(3.5rem,6vw,6rem);}.footerLine{grid-template-columns:1fr;gap:1rem;}}
 @media(max-width:800px){.journey{display:flex;flex-direction:column;padding:0 1.2rem;gap:0;}.copy{display:contents;}.intro{order:1;min-height:0;padding:9rem .5rem 2.5rem;}.title{font-size:clamp(3.6rem,12vw,5.8rem);}.title em{white-space:normal;}.eyebrow{margin-bottom:2rem;font-size:.59rem;}.footerLine{margin-top:2rem;}.avatarColumn{order:2;position:relative;top:auto;height:480px;min-height:0;width:100%;max-width:none;}.chapters{order:3;padding-bottom:2rem;}.chapter{min-height:65vh;padding:4rem .5rem;}.finalCTA{min-height:55vh;padding:5rem 1rem;}}
 @media(max-width:460px){.title{font-size:clamp(3.2rem,12.5vw,4.5rem);}.subtitle{font-size:1.04rem;}.intro{padding-top:7.5rem;}.avatarColumn{height:420px;}.primary,.secondary{font-size:.66rem;padding:.8rem .9rem;min-height:48px;}.scrollHint{font-size:.6rem;}.finalCTA h2 em{white-space:normal;}}
+
+/* Screenshot QA: a phone in Chrome desktop-site mode can report a 980px viewport.
+   Stack the experience BEFORE the grid becomes cramped, not at 800px. */
+@media (max-width: 1199px) {
+  .journey {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 760px;
+    padding: 0 clamp(1rem, 3.5vw, 2rem);
+    margin: 0 auto;
+  }
+  .copy { display: contents; }
+  .intro {
+    order: 1;
+    width: 100%;
+    min-height: 0;
+    padding: clamp(7.2rem, 12vh, 9rem) 0 2.5rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .eyebrow { margin-bottom: 1.5rem; }
+  .title {
+    font-size: clamp(3.45rem, 7.5vw, 5.6rem);
+    max-width: 100%;
+    line-height: .98;
+    overflow-wrap: break-word;
+  }
+  .title em { white-space: normal; }
+  .subtitle { font-size: clamp(1.06rem, 1.75vw, 1.22rem); max-width: 680px; }
+  .footerLine { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.7rem; }
+  .scrollHint { margin-top: 1.8rem; }
+  .avatarColumn {
+    order: 2;
+    position: relative;
+    top: auto;
+    width: 100%;
+    height: clamp(400px, 57svh, 560px);
+    min-height: 0;
+    max-width: 680px;
+    margin: 0 auto 2rem;
+    padding-top: 0;
+    align-self: center;
+  }
+  .avatarCaption { font-size: .67rem; }
+  .chapters { order: 3; padding-bottom: 1.2rem; }
+  .chapter { min-height: 0; padding: 3.4rem .15rem; }
+  .chapter h2 { font-size: clamp(2.2rem, 4.8vw, 3.75rem); }
+  .chapter p { font-size: 1.08rem; }
+  .finalCTA { min-height: 0; padding: 5rem 1.25rem 6rem; }
+  .finalCTA h2 { font-size: clamp(2.7rem, 5.5vw, 4.7rem); }
+  .ctaGlow { width: 90vw; height: 90vw; }
+}
+@media (max-width: 600px) {
+  .journey { max-width: none; padding: 0 1rem; }
+  .intro { padding: 7.5rem .15rem 1.8rem; }
+  .eyebrow { font-size: .65rem; line-height: 1.5; }
+  .title { font-size: clamp(3.25rem, 10.8vw, 4.75rem); }
+  .subtitle { font-size: 1.05rem; }
+  .actions { gap: .7rem; margin-top: 1.8rem; }
+  .primary,.secondary { white-space: normal; text-align: center; min-height: 48px; }
+  .footerLine { grid-template-columns: 1fr; gap: 1.1rem; margin-top: 2rem; }
+  .avatarColumn { height: clamp(370px, 53svh, 475px); margin-bottom: 1rem; }
+  .avatarCaption { font-size: .55rem; }
+  .chapter { padding: 2.7rem .15rem; }
+  .chapter h2 { font-size: clamp(2rem, 7.7vw, 2.9rem); }
+  .chapter p { font-size: 1rem; margin-top: 1rem; }
+  .finalCTA { padding: 4.5rem 1rem 5.5rem; }
+  .finalCTA h2 { font-size: clamp(2.3rem, 9vw, 3.4rem); }
+  .finalCTA h2 em { white-space: normal; }
+}
+@media (max-width: 360px) {
+  .title { font-size: 3.05rem; }
+  .eyebrow { font-size: .58rem; }
+  .avatarColumn { height: 360px; }
+}

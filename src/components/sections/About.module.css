@@ -341,3 +341,20 @@
     transform: rotate(90deg);
   }
 }
+
+@media (max-width: 1199px) {
+  .section { padding: 7rem clamp(1rem,3vw,2rem) 4rem; }
+  .container { max-width: 760px; gap: 2.6rem; }
+  .bentoGrid,.splitGrid { grid-template-columns: minmax(0,1fr); gap: 1.25rem; }
+  .workGrid { gap: 1rem; }
+  .introHighlight { font-size: clamp(1.9rem,4vw,2.6rem); }
+  .rolePanel,.sidePanel,.textPanel { padding: 1.5rem; }
+  .headedPanel { padding: 2rem 1.2rem; }
+}
+@media (max-width: 600px) {
+  .section { padding: 6.5rem 1rem 3rem; }
+  .workGrid { grid-template-columns: 1fr; }
+  .workCard { padding: 1.2rem; }
+  .introHighlight { font-size: 1.85rem; }
+  .rolePanel,.sidePanel,.textPanel { padding: 1.2rem; }
+}
