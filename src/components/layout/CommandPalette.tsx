@@ -43,7 +43,7 @@ export function CommandPalette() {
       </button>
       {open && <div className={styles.backdrop} onMouseDown={() => setOpen(false)}>
         <section className={styles.dialog} role="dialog" aria-modal="true" aria-label="Quick navigation" onMouseDown={e => e.stopPropagation()}>
-          <div className={styles.search}><Command size={19} /><input ref={searchRef} value={query} onChange={e => setQuery(e.target.value)} placeholder="Where would you like to go?" aria-label="Filter portfolio pages" onKeyDown={e => { if (e.key === 'Enter' && matches[0]) go(matches[0][1]); }} /><button onClick={() => setOpen(false)}>ESC</button></div>
+          <div className={styles.search}><Command size={19} /><input ref={searchRef} value={query} onChange={e => setQuery(e.target.value)} placeholder="Where would you like to go?" aria-label="Filter portfolio pages" onKeyDown={e => { if (e.key === 'Enter' && matches[0]) go(matches[0][1]); }} /><button type="button" onClick={() => setOpen(false)} aria-label="Close quick navigation">ESC</button></div>
           <div className={styles.results}>
             {matches.length ? matches.map(item => <button type="button" key={item[1]} onClick={() => go(item[1])}><span><strong>{item[0]}</strong><small>{item[2]}</small></span><ArrowUpRight size={17} /></button>) : <p>No pages match that search.</p>}
           </div>

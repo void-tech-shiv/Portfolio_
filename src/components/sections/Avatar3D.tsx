@@ -33,7 +33,7 @@ function createScene(gl:WebGLRenderingContext){
   if(!gl.getProgramParameter(program,gl.LINK_STATUS)){console.warn('Avatar link:',gl.getProgramInfoLog(program));return null;}
   const vertices=mesh(),buffer=gl.createBuffer();if(!buffer)return null;
   gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);
-  gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.enable(gl.CULL_FACE);
+  gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);
   return {program,buffer,count:vertices.length/3,position:gl.getAttribLocation(program,'position'),
     mvp:gl.getUniformLocation(program,'mvp'),model:gl.getUniformLocation(program,'model'),color:gl.getUniformLocation(program,'color'),glow:gl.getUniformLocation(program,'glow')};
 }

@@ -1,70 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import styles from './CustomCursor.module.css';
-import { motion } from 'framer-motion';
 
-export const CustomCursor: React.FC = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Check if mobile/touch device
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      setIsMobile(true);
-      return;
-    }
-
-    const onMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+export const CustomCursor=()=>{
+  const x=useMotionValue(-100),y=useMotionValue(-100);
+  const ringX=useSpring(x,{stiffness:260,damping:25}),ringY=useSpring(y,{stiffness:260,damping:25});
+  const [active,setActive]=useState(false),[hover,setHover]=useState(false);
+  useEffect(()=>{
+    const media=window.matchMedia('(pointer: fine)');
+    const setup=()=>{
+      const allowed=media.matches&&document.documentElement.dataset.reduceMotion!=='true';
+      setActive(allowed);document.documentElement.classList.toggle('custom-cursor-enabled',allowed);
     };
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.classList.contains('interactive')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+    setup();media.addEventListener('change',setup);
+    const cursor=(e:MouseEvent)=>{x.set(e.clientX);y.set(e.clientY);};
+    const over=(e:MouseEvent)=>{
+      const target=e.target as HTMLElement|null;
+      setHover(Boolean(target?.closest('a,button,[role="button"],input')));
     };
-
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseover', handleMouseOver);
-
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseover', handleMouseOver);
-    };
-  }, []);
-
-  if (isMobile) return null;
-
-  return (
-    <>
-      <motion.div
-        className={styles.cursorDot}
-        animate={{
-          x: mousePos.x - 4,
-          y: mousePos.y - 4,
-          scale: isHovering ? 2 : 1,
-        }}
-        transition={{ type: 'tween', ease: 'backOut', duration: 0.15 }}
-      />
-      <motion.div
-        className={styles.cursorRing}
-        animate={{
-          x: mousePos.x - 16,
-          y: mousePos.y - 16,
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 0.8 : 0.2,
-        }}
-        transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
-      />
-    </>
-  );
+    const observer=new MutationObserver(setup);
+    observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-reduce-motion']});
+    window.addEventListener('mousemove',cursor,{passive:true});window.addEventListener('mouseover',over);
+    return()=>{media.removeEventListener('change',setup);observer.disconnect();window.removeEventListener('mousemove',cursor);window.removeEventListener('mouseover',over);document.documentElement.classList.remove('custom-cursor-enabled');};
+  },[x,y]);
+  if(!active)return null;
+  return <>
+    <motion.div className={styles.cursorDot} style={{x,y,translateX:-4,translateY:-4,scale:hover?1.7:1}} aria-hidden="true"/>
+    <motion.div className={styles.cursorRing} style={{x:ringX,y:ringY,translateX:-16,translateY:-16,scale:hover?1.5:1,opacity:hover?.8:.3}} aria-hidden="true"/>
+  </>;
 };

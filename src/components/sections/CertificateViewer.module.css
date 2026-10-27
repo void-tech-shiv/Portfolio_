@@ -165,3 +165,6 @@
     width: 100%;
   }
 }
+
+button.imageContainer{border:0;color:inherit;display:flex;width:100%;min-height:0;cursor:zoom-in;padding:0;}
+button.imageContainer[aria-pressed="true"]{cursor:zoom-out;}
