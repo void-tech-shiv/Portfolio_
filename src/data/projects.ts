@@ -64,23 +64,23 @@ export const projects: Project[] = [
   {
     id: "skilltrack",
     number: "003",
-    title: "SkillTrack",
-    description: "Comprehensive platform for tracking technical skills, learning progress, and project milestones.",
-    overview: "SkillTrack allows developers and students to map out their learning journeys visually and track their milestones effectively.",
-    problem: "Developers often lose track of their learning progress across multiple domains and resources.",
-    approach: "A centralized platform to visualize skill trees, bookmark resources, and set progressive milestones.",
+    title: "Skill & Employment Outcomes Platform",
+    description: "Role-based dashboard for tracking training outcomes, employment verification and state-level skill analytics.",
+    overview: "A multi-role skill and employment outcomes analytics platform with admin, provider, trainee, employer and analyst portals.",
+    problem: "Training outcomes, placements and employment claims are difficult to analyze when they are scattered across providers and institutions.",
+    approach: "Role-scoped dashboards, trainee records, provider KPIs, data ingestion, employment verification and machine-learning risk analysis.",
     category: "WEB",
-    technologies: ["TypeScript", "Next.js", "Prisma", "PostgreSQL"],
-    status: "LIVE",
+    technologies: ["React", "Express", "Prisma", "PostgreSQL", "FastAPI"],
+    status: "PROJECT",
     githubUrl: "https://github.com/void-tech-shiv/skilltrack",
     liveUrl: "https://skilltrack-beta1.vercel.app/",
     features: [
-      "Skill taxonomy and mapping",
-      "Progress visualization",
-      "Goal setting and tracking",
-      "Resource bookmarking"
+      "Multi-role dashboards and scoped access",
+      "Trainee search, filtering and pagination",
+      "Employment-claim verification",
+      "Machine-learning dropout risk scoring"
     ],
-    architecture: "Full-stack Next.js application. Data persists in a PostgreSQL database accessed via Prisma ORM.",
+    architecture: "Vite/React frontend, Express.js API with Prisma and PostgreSQL, plus a Python FastAPI machine-learning service.",
     image: "/assets/projects/skilltrack.jpg"
   },
   {

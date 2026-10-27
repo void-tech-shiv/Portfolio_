@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Avatar3D.module.css';
 type Mat = Float32Array;
 type Part = {x:number;y:number;z:number;sx:number;sy:number;sz:number;color:[number,number,number];rz?:number;rx?:number;glow?:number};
@@ -39,10 +39,11 @@ function createScene(gl:WebGLRenderingContext){
 }
 export function Avatar3D(){
   const ref=useRef<HTMLCanvasElement>(null);
+  const [supported,setSupported]=useState(true);
   useEffect(()=>{
     const canvas=ref.current;if(!canvas)return;
     const gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});
-    if(!gl)return;
+    if(!gl){setSupported(false);return;}
     const scene=createScene(gl);if(!scene)return;
     let live=true,visible=true,frameId=0,progress=0,mouse=0,time=0,last=0;
     const dark:[number,number,number]=[.07,.12,.18],silver:[number,number,number]=[.18,.26,.34],bright:[number,number,number]=[.30,.48,.58];
@@ -128,7 +129,7 @@ export function Avatar3D(){
   return <div className={styles.stage} role="img" aria-label="Stylized futuristic full-body 3D avatar, animated by scroll and pointer movements">
     <div className={styles.orbit} aria-hidden="true" />
     <div className={styles.scanner} aria-hidden="true" />
-    <canvas ref={ref} className={styles.canvas} aria-hidden="true" />
+    {supported ? <canvas ref={ref} className={styles.canvas} aria-hidden="true" /> : <div className={styles.fallback}><img src="/assets/photos/portrait.png" alt="Shivanshu Satyajeet portrait" /><p>3D preview unavailable on this device</p></div>}
     <div className={styles.cornerOne} aria-hidden="true" /><div className={styles.cornerTwo} aria-hidden="true" />
     <div className={styles.overlayTop}>AVATAR / PROTOCOL 001 <span>LIVE RENDER</span></div>
     <div className={styles.overlayBottom}><span className={styles.dot} /> SCROLL TO EVOLVE <span>3D · INTERACTIVE</span></div>
