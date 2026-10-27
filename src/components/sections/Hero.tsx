@@ -1,199 +1,75 @@
-import React from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { GlassButton } from '../common/GlassButton';
-import { ArrowRight, Download } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, MoveDown, Layers3, ShieldCheck, BrainCircuit, Github, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Avatar3D } from './Avatar3D';
 import styles from './Hero.module.css';
-import portraitImg from '../../../public/assets/photos/portrait.png';
 
-export const Hero: React.FC = () => {
-  const { scrollY } = useScroll();
-  const navigate = useNavigate();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-
-  // Reactive portrait
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springConfig = { damping: 20, stiffness: 100, mass: 0.5 };
-  const portraitX = useSpring(mouseX, springConfig);
-  const portraitY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const { innerWidth, innerHeight } = window;
-    const x = (e.clientX / innerWidth - 0.5) * 30; // Max 15px movement
-    const y = (e.clientY / innerHeight - 0.5) * 30;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  return (
-    <section id="home" className={styles.heroSection} onMouseMove={handleMouseMove}>
-      <div className={styles.container}>
-        
-        <div className={styles.content}>
-
-
-          <motion.h1 
-            className={styles.title}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            SHIVANSHU<br />
-            SATYAJEET
+const chapters = [
+  {
+    no:'01 / ENGINEERING', icon:<Layers3 size={19}/>, title:'I design. I build. I ship.',
+    copy:'From ideas to working products, I focus on useful engineering and thoughtful interfaces.',
+    tags:['TypeScript','React','Systems'], link:'/projects', action:'View shipped work'
+  },
+  {
+    no:'02 / INTELLIGENCE', icon:<BrainCircuit size={19}/>, title:'Practical AI, not just prompts.',
+    copy:'I experiment with machine learning and build software that puts data and automation to work.',
+    tags:['AI / ML','Python','Data'], link:'/skills', action:'Explore my stack'
+  },
+  {
+    no:'03 / SECURITY', icon:<ShieldCheck size={19}/>, title:'Build securely. Think critically.',
+    copy:'Security-minded tools, privacy-first workflows and systems that take reliability seriously.',
+    tags:['Security','Architecture','Privacy'], link:'/contact', action:'Work together'
+  }
+];
+export const Hero = () => (
+  <>
+    <section className={styles.journey} id="journey">
+      <div className={styles.copy}>
+        <div className={styles.intro}>
+          <motion.div className={styles.eyebrow} initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.55}}>
+            <span className={styles.pulse} /> OPEN TO INTERNSHIPS & COLLABORATIONS
+          </motion.div>
+          <motion.p className={styles.overline} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.15}}>SOFTWARE ENGINEER IN THE MAKING // INDIA</motion.p>
+          <motion.h1 className={styles.title} initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{duration:.7,delay:.12}}>
+            Building what<br/><em>comes next.</em>
           </motion.h1>
-
-          <motion.div 
-            className={styles.roles}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            <h2>SOFTWARE DEVELOPER</h2>
-            <div className={styles.tags}>
-              <span className={styles.tag}>AI / ML</span>
-              <span className={styles.tagDot}>•</span>
-              <span className={styles.tag}>WEB</span>
-              <span className={styles.tagDot}>•</span>
-              <span className={styles.tag}>SECURITY</span>
-            </div>
-          </motion.div>
-
-          <motion.p 
-            className={styles.description}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-          >
-            I BUILD DIGITAL SYSTEMS THAT SOLVE REAL PROBLEMS.<br /><br />
-            <span style={{ opacity: 0.8, fontSize: '0.9em', lineHeight: '1.6', display: 'inline-block' }}>
-              I am a software developer who enjoys building practical software, AI/ML systems, web applications, and security-focused tools.
-            </span>
+          <motion.p className={styles.subtitle} initial={{opacity:0,y:15}} animate={{opacity:1,y:0}} transition={{delay:.3}}>
+            Hey, I'm <strong>Shivanshu Satyajeet.</strong> I build digital experiences, AI-powered tools and security-focused software — with an obsession for turning ideas into things that work.
           </motion.p>
-
-          <motion.div 
-            className={styles.secondaryRole}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <span className={styles.roleLabel}>TECHNICAL HEAD</span>
-            <span className={styles.roleOrg}>FORCE VEGA RACING</span>
+          <motion.div className={styles.actions} initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:.42}}>
+            <Link className={styles.primary} to="/projects">EXPLORE MY WORK <ArrowUpRight size={18}/></Link>
+            <Link className={styles.secondary} to="/contact">LET'S CONNECT <Mail size={17}/></Link>
           </motion.div>
-
-          <motion.div 
-            className={styles.actions}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-          >
-            <GlassButton onClick={() => navigate('/projects')} icon={<ArrowRight size={18} />}>
-              EXPLORE PROJECTS
-            </GlassButton>
-            <GlassButton href="/assets/resume.pdf" variant="secondary" icon={<Download size={18} />}>
-              VIEW RESUME
-            </GlassButton>
+          <motion.div className={styles.footerLine} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.65}}>
+            <div><span>NOW BUILDING</span><strong>Software • AI • Security</strong></div>
+            <div><span>CURRENT ROLE</span><strong>Technical Head · Force Vega Racing</strong></div>
           </motion.div>
+          <div className={styles.scrollHint}><MoveDown size={16}/> SCROLL TO EXPLORE THE SYSTEM</div>
         </div>
-
-        <motion.div 
-          className={styles.visuals}
-          style={{ y: y1 }}
-        >
-          <motion.div 
-            className={styles.portraitContainer}
-            style={{ x: portraitX, y: portraitY }}
-          >
-            {/* Ambient Lighting */}
-            <div className={styles.ambientCyan} />
-            <div className={styles.ambientPurple} />
-
-            {/* Circular HUD */}
-            <div className={styles.hudContainer}>
-              <motion.div className={styles.hudCircleOuter} animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 60, ease: "linear" }} />
-              <motion.div className={styles.hudCircleArc1} animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} />
-              <motion.div className={styles.hudCircleArc2} animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 30, ease: "linear" }} />
-              <div className={styles.hudTicks} />
-            </div>
-
-            {/* Premium Frame & Portrait */}
-            <div className={styles.portraitWrapper}>
-              <div className={styles.frameCornerTopLeft} />
-              <div className={styles.frameCornerTopRight} />
-              <div className={styles.frameCornerBottomLeft} />
-              <div className={styles.frameCornerBottomRight} />
-              
-              <div className={styles.portraitInner}>
-                <img 
-                  src={portraitImg} 
-                  alt="Shivanshu Satyajeet" 
-                  className={styles.portraitImg}
-                />
-                <div className={styles.scanLine} />
-                <div className={styles.portraitGlassOverlay} />
-              </div>
-            </div>
-
-            {/* Identity Label */}
-            <motion.div 
-              className={styles.identityBadge}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.4 }}
-            >
-              <span className={styles.statusDot} />
-              IDENTITY / VERIFIED
-            </motion.div>
-
-            {/* Technical Metadata Labels */}
-            <div className={styles.metadataTopRight}>
-              <span className={styles.metaLine}></span>
-              <span>PROFILE / 001</span>
-            </div>
-            
-            <div className={styles.metadataRight}>
-              <span>SYSTEM / DEVELOPER</span>
-              <span className={styles.metaLineShort}></span>
-            </div>
-
-            <div className={styles.metadataRightLower}>
-              <span>AI / ML</span>
-              <span className={styles.metaLineShort}></span>
-            </div>
-
-            <div className={styles.metadataBottomLeft}>
-              <div className={styles.coordBox}>
-                <span>LAT: 45.912</span>
-                <span>LNG: -12.004</span>
-              </div>
-            </div>
-
-            <div className={styles.metadataLeft}>
-              <span className={styles.metaLineShort}></span>
-              <span>BUILD / SHIP / IMPROVE</span>
-            </div>
-
-            {/* System Status Bar */}
-            <motion.div 
-              className={styles.systemStatusBar}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6 }}
-            >
-              <div className={styles.statusLight} />
-              <span className={styles.statusTextActive}>SYSTEM / ONLINE</span>
-              <span className={styles.statusDivider}></span>
-              <span>SOFTWARE</span>
-              <span className={styles.statusDivider}></span>
-              <span>AI / ML</span>
-              <span className={styles.statusDivider}></span>
-              <span>SECURITY</span>
-            </motion.div>
-
-          </motion.div>
-        </motion.div>
-
+        <div className={styles.chapters}>
+          {chapters.map(item=><motion.article key={item.no} className={styles.chapter} initial={{opacity:0,y:40}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.2}} transition={{duration:.55}}>
+            <div className={styles.chapterTop}><span>{item.no}</span><span>{item.icon}</span></div>
+            <h2>{item.title}</h2>
+            <p>{item.copy}</p>
+            <div className={styles.tags}>{item.tags.map(tag=><span key={tag}>{tag}</span>)}</div>
+            <Link className={styles.chapterLink} to={item.link}>{item.action}<ArrowUpRight size={18}/></Link>
+          </motion.article>)}
+        </div>
+      </div>
+      <aside className={styles.avatarColumn} aria-label="Interactive full-body avatar scene">
+        <Avatar3D />
+        <div className={styles.avatarCaption}><span>SYS.001 / SHIVANSHU</span><span>REACTIVITY: ACTIVE</span></div>
+      </aside>
+    </section>
+    <section className={styles.finalCTA} aria-labelledby="final-cta">
+      <div className={styles.ctaGlow} aria-hidden="true"/>
+      <span className={styles.ctaEyebrow}>NEXT MISSION / YOUR IDEA</span>
+      <h2 id="final-cta">Let's make something<br/><em>extraordinary.</em></h2>
+      <p>Looking for a developer who loves figuring things out? Let's talk.</p>
+      <div className={styles.ctaLinks}>
+        <Link className={styles.primary} to="/contact">START A CONVERSATION <ArrowUpRight size={18}/></Link>
+        <a href="https://github.com/void-tech-shiv" rel="noopener noreferrer" target="_blank" className={styles.secondary}>GITHUB <Github size={18}/></a>
       </div>
     </section>
-  );
-};
+  </>
+);
