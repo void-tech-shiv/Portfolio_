@@ -1,107 +1,45 @@
-import { useState, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Layout } from './components/layout/Layout';
 import { PageTransition } from './components/layout/PageTransition';
 import { ScrollToTop } from './components/layout/ScrollToTop';
-import { Hero } from './components/sections/Hero';
-import { About } from './components/sections/About';
-import { Projects } from './components/sections/Projects';
-import { Experience } from './components/sections/Experience';
-import { Skills } from './components/sections/Skills';
-import { Certifications } from './components/sections/Certifications';
-import { Contact } from './components/sections/Contact';
-import { WelcomeScreen } from './components/layout/WelcomeScreen';
-import { AudioController } from './components/layout/AudioController';
+import { RouteMeta } from './components/layout/RouteMeta';
+import { CommandPalette } from './components/layout/CommandPalette';
+import { ExperienceControls } from './components/layout/ExperienceControls';
+import { NotFound } from './components/layout/NotFound';
 
-function App() {
+const Hero = lazy(() => import('./components/sections/Hero').then(m => ({ default: m.Hero })));
+const About = lazy(() => import('./components/sections/About').then(m => ({ default: m.About })));
+const Projects = lazy(() => import('./components/sections/Projects').then(m => ({ default: m.Projects })));
+const Experience = lazy(() => import('./components/sections/Experience').then(m => ({ default: m.Experience })));
+const Skills = lazy(() => import('./components/sections/Skills').then(m => ({ default: m.Skills })));
+const Certifications = lazy(() => import('./components/sections/Certifications').then(m => ({ default: m.Certifications })));
+const Contact = lazy(() => import('./components/sections/Contact').then(m => ({ default: m.Contact })));
+
+export default function App() {
   const location = useLocation();
-  const [hasEntered, setHasEntered] = useState(false);
-
-  useEffect(() => {
-    const audio = document.getElementById('bg-audio') as HTMLAudioElement;
-    const targetVolume = 0.15;
-    let hasStarted = false;
-    let fadeInterval: number;
-    
-    if (audio) {
-      audio.volume = 0;
-      
-      const fadeIn = () => {
-        let vol = 0;
-        fadeInterval = window.setInterval(() => {
-          vol += 0.01;
-          if (vol >= targetVolume) {
-            audio.volume = targetVolume;
-            window.clearInterval(fadeInterval);
-          } else {
-            audio.volume = vol;
-          }
-        }, 100);
-      };
-
-      const handleInteraction = () => {
-        if (hasStarted) return;
-        hasStarted = true;
-        
-        audio.play().then(() => {
-          fadeIn();
-        }).catch(e => console.warn("Playback failed:", e));
-        
-        ['click', 'keydown', 'touchstart', 'mousemove'].forEach(evt => 
-          document.removeEventListener(evt, handleInteraction)
-        );
-      };
-
-      // Attempt autoplay
-      audio.play().then(() => {
-        hasStarted = true;
-        fadeIn();
-      }).catch((error) => {
-        console.warn("Autoplay blocked. Waiting for interaction.", error);
-        ['click', 'keydown', 'touchstart', 'mousemove'].forEach(evt => 
-          document.addEventListener(evt, handleInteraction)
-        );
-      });
-    }
-
-    return () => {
-      if (fadeInterval) window.clearInterval(fadeInterval);
-    };
-  }, []);
-
-  const handleEnter = () => {
-    setHasEntered(true);
-  };
-
-  return (
-    <>
-      <audio id="bg-audio" loop preload="auto">
-        <source src="/audio/portfolio-ambient.mp3" type="audio/mpeg" />
-      </audio>
-
-      <AnimatePresence>
-        {!hasEntered && <WelcomeScreen onEnter={handleEnter} />}
-      </AnimatePresence>
-
-      {hasEntered && <AudioController audioElementId="bg-audio" />}
-
-      <Layout>
-        <ScrollToTop />
+  return <>
+    <RouteMeta />
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <Layout>
+      <ScrollToTop />
+      <Suspense fallback={<div className="route-loading" role="status">Loading experience…</div>}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><Hero /></PageTransition>} />
-          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-          <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
-          <Route path="/experience" element={<PageTransition><Experience /></PageTransition>} />
-          <Route path="/skills" element={<PageTransition><Skills /></PageTransition>} />
-          <Route path="/certifications" element={<PageTransition><Certifications /></PageTransition>} />
-          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-        </Routes>
+            <Route path="/" element={<PageTransition><Hero /></PageTransition>} />
+            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+            <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+            <Route path="/experience" element={<PageTransition><Experience /></PageTransition>} />
+            <Route path="/skills" element={<PageTransition><Skills /></PageTransition>} />
+            <Route path="/certifications" element={<PageTransition><Certifications /></PageTransition>} />
+            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </AnimatePresence>
-      </Layout>
-    </>
-  );
+      </Suspense>
+    </Layout>
+    <ExperienceControls />
+    <CommandPalette />
+  </>;
 }
-
-export default App;

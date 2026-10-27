@@ -178,3 +178,7 @@
     display: block;
   }
 }
+
+.mobileMenu { overflow-y: auto; overscroll-behavior: contain; padding-bottom: max(3rem, env(safe-area-inset-bottom)); }
+.mobileMenuBtn,.closeBtn { min-height:44px; min-width:44px; display:grid; place-items:center; }
+@media(max-width:1024px) { .mobileMenuBtn { display:grid; } }
