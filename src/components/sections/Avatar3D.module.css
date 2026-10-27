@@ -1,0 +1,14 @@
+.stage{width:100%;height:100%;min-height:420px;position:relative;border:1px solid rgba(0,240,255,.18);border-radius:32px;background:radial-gradient(ellipse at 50% 45%,rgba(0,175,235,.11),transparent 55%),linear-gradient(160deg,rgba(13,24,40,.96),rgba(4,8,16,.98));overflow:hidden;box-shadow:inset 0 0 100px rgba(0,170,210,.035),0 35px 100px #0009;isolation:isolate;}
+.stage::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:40px 40px;opacity:.55;mask-image:radial-gradient(circle,#000 10%,transparent 78%);}
+.stage::after{content:"";position:absolute;left:8%;right:8%;bottom:10%;height:12%;border-radius:50%;border:1px solid rgba(0,240,255,.25);box-shadow:0 0 45px rgba(0,240,255,.14),inset 0 0 25px rgba(0,240,255,.08);transform:perspective(300px) rotateX(70deg);pointer-events:none;}
+.canvas{width:100%;height:100%;position:absolute;inset:0;display:block;z-index:2;touch-action:pan-y;}
+.orbit{position:absolute;width:78%;aspect-ratio:1;left:11%;top:20%;border-radius:50%;border:1px dashed rgba(0,240,255,.14);box-shadow:0 0 40px rgba(0,240,255,.05);animation:spin 75s linear infinite;}
+.scanner{position:absolute;z-index:3;inset:0;pointer-events:none;background:linear-gradient(transparent,rgba(0,240,255,.035),transparent);background-size:100% 180px;animation:sweep 8s linear infinite;}
+.cornerOne,.cornerTwo{position:absolute;z-index:4;width:35px;height:35px;border-color:var(--color-accent-primary);border-style:solid;opacity:.85;pointer-events:none;}
+.cornerOne{top:18px;left:18px;border-width:2px 0 0 2px;}.cornerTwo{bottom:18px;right:18px;border-width:0 2px 2px 0;}
+.overlayTop,.overlayBottom{z-index:5;position:absolute;left:2rem;right:2rem;display:flex;justify-content:space-between;gap:10px;align-items:center;color:#9aa3b2;font:500 .68rem/1.5 var(--font-mono);letter-spacing:.08em;pointer-events:none;}
+.overlayTop{top:2rem;}.overlayTop span{color:var(--color-accent-primary);}.overlayBottom{bottom:2rem;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent-primary);box-shadow:0 0 10px var(--color-accent-primary);}
+@keyframes spin{to{transform:rotate(360deg);}}@keyframes sweep{to{background-position:0 360px;}}
+@media(max-width:800px){.stage{min-height:340px;border-radius:20px;}.overlayTop,.overlayBottom{left:1rem;right:1rem;font-size:.56rem;}.overlayTop{top:1.4rem;}.overlayBottom{bottom:1.4rem;}}
+@media(prefers-reduced-motion:reduce){.scanner,.orbit{animation:none;}}
