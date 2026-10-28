@@ -1,10 +1,11 @@
-import { ArrowUpRight, Github, Linkedin, Mail, Send } from 'lucide-react';
+import { ArrowUpRight, Mail, Send } from 'lucide-react';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 import styles from './Contact.module.css';
 
 const links = [
   { label: 'Email', value: 'itsupport.shiv@gmail.com', url: 'mailto:itsupport.shiv@gmail.com', icon: Mail },
-  { label: 'GitHub', value: 'github.com/void-tech-shiv', url: 'https://github.com/void-tech-shiv', icon: Github },
-  { label: 'LinkedIn', value: 'Shivanshu Satyajeet', url: 'https://www.linkedin.com/in/shivanshusatyajeet/', icon: Linkedin },
+  { label: 'GitHub', value: 'github.com/void-tech-shiv', url: 'https://github.com/void-tech-shiv', icon: FaGithub },
+  { label: 'LinkedIn', value: 'Shivanshu Satyajeet', url: 'https://www.linkedin.com/in/shivanshusatyajeet/', icon: FaLinkedinIn },
   { label: 'Telegram', value: '@xtshivanshu', url: 'https://t.me/xtshivanshu', icon: Send },
 ];
 
