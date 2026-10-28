@@ -27,7 +27,6 @@ export const Navbar = () => {
     };
   }, [open]);
 
-  useEffect(() => { setOpen(false); }, [location.pathname]);
 
   return (
     <>
