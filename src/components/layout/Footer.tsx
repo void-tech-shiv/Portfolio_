@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail } from 'lucide-react';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6';
 import styles from './Footer.module.css';
 
 export const Footer = () => (
@@ -21,6 +21,7 @@ export const Footer = () => (
           <a href="https://github.com/void-tech-shiv" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub size={20}/></a>
           <a href="https://www.linkedin.com/in/shivanshusatyajeet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={20}/></a>
           <a href="mailto:itsupport.shiv@gmail.com" aria-label="Email"><Mail size={20}/></a>
+          <a href="https://wa.me/917541910379?text=Hi%20Shivanshu%2C%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp at +91 75419 10379"><FaWhatsapp size={20}/></a>
           <a href="https://t.me/xtshivanshu" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><ArrowUpRight size={20}/></a>
         </div>
       </div>
