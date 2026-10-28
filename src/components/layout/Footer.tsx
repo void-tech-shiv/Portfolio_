@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 import styles from './Footer.module.css';
 
 export const Footer = () => (
@@ -17,8 +18,8 @@ export const Footer = () => (
           <Link to="/contact">Contact</Link>
         </nav>
         <div className={styles.social}>
-          <a href="https://github.com/void-tech-shiv" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={20}/></a>
-          <a href="https://www.linkedin.com/in/shivanshusatyajeet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={20}/></a>
+          <a href="https://github.com/void-tech-shiv" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub size={20}/></a>
+          <a href="https://www.linkedin.com/in/shivanshusatyajeet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={20}/></a>
           <a href="mailto:itsupport.shiv@gmail.com" aria-label="Email"><Mail size={20}/></a>
           <a href="https://t.me/xtshivanshu" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><ArrowUpRight size={20}/></a>
         </div>
