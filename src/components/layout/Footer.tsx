@@ -1,32 +1,33 @@
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
-import { FiMail } from 'react-icons/fi';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 import styles from './Footer.module.css';
 
 export const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.container}>
-      <div className={styles.topSection}>
-        <div className={styles.leftSide}>
-          <p className={styles.tagline}>BUILDING DIGITAL SYSTEMS THAT SOLVE REAL PROBLEMS.</p>
-          <p className={styles.subTagline}>Software Development <span className={styles.dot}>•</span> AI/ML <span className={styles.dot}>•</span> Web <span className={styles.dot}>•</span> Security</p>
+      <div className={styles.main}>
+        <div>
+          <Link to="/" className={styles.name}>Shivanshu Satyajeet<span>.</span></Link>
+          <p>Software developer working on useful products, websites and tools.</p>
         </div>
-        <div className={styles.rightSide}>
-          <span className={styles.connectLabel}>LET'S CONNECT</span>
-          <div className={styles.socialLinks}>
-            <a href="https://github.com/void-tech-shiv" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub profile"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/shivanshusatyajeet/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn profile"><FaLinkedinIn /></a>
-            <a href="mailto:itsupport.shiv@gmail.com" className={styles.socialIcon} aria-label="Email Shivanshu"><FiMail /></a>
-            <a href="https://x.com/xt_shivanshu" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="X profile"><FaXTwitter /></a>
-          </div>
+        <nav className={styles.links} aria-label="Footer navigation">
+          <Link to="/projects">Projects</Link>
+          <Link to="/about">About</Link>
+          <Link to="/certifications">Certifications</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
+        <div className={styles.social}>
+          <a href="https://github.com/void-tech-shiv" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub size={20}/></a>
+          <a href="https://www.linkedin.com/in/shivanshusatyajeet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={20}/></a>
+          <a href="mailto:itsupport.shiv@gmail.com" aria-label="Email"><Mail size={20}/></a>
+          <a href="https://t.me/xtshivanshu" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><ArrowUpRight size={20}/></a>
         </div>
       </div>
-      <div className={styles.divider}/>
-      <div className={styles.bottomSection}>
-        <p className={styles.copyright}>© 2026 Shivanshu Satyajeet. Built with curiosity.</p>
-        <Link to="/" className={styles.backToTop}>RETURN HOME ↑</Link>
+      <div className={styles.bottom}>
+        <span>© 2026 Shivanshu Satyajeet</span>
+        <span>Built with React and TypeScript.</span>
       </div>
-      <div className={styles.footerAccentLine}/>
     </div>
   </footer>
 );

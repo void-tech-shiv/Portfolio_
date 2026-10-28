@@ -5,8 +5,6 @@ import { Layout } from './components/layout/Layout';
 import { PageTransition } from './components/layout/PageTransition';
 import { ScrollToTop } from './components/layout/ScrollToTop';
 import { RouteMeta } from './components/layout/RouteMeta';
-import { CommandPalette } from './components/layout/CommandPalette';
-import { ExperienceControls } from './components/layout/ExperienceControls';
 import { NotFound } from './components/layout/NotFound';
 
 const Hero = lazy(() => import('./components/sections/Hero').then(m => ({ default: m.Hero })));
@@ -24,7 +22,7 @@ export default function App() {
     <a className="skip-link" href="#main-content">Skip to content</a>
     <Layout>
       <ScrollToTop />
-      <Suspense fallback={<div className="route-loading" role="status">Loading experience…</div>}>
+      <Suspense fallback={<div className="route-loading" role="status">Loading page…</div>}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><Hero /></PageTransition>} />
@@ -39,7 +37,5 @@ export default function App() {
         </AnimatePresence>
       </Suspense>
     </Layout>
-    <ExperienceControls />
-    <CommandPalette />
   </>;
 }

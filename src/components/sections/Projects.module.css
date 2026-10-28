@@ -98,3 +98,12 @@
   .section { padding: 6.5rem 1rem 3.5rem; }
   .projectCount { margin: .6rem 0 0; }
 }
+
+
+/* Uncluttered project filters and cards */
+.section{padding-top:9rem}
+.grid{gap:1.25rem}
+.projectCount{background:transparent;border:0;padding:0;color:var(--color-text-tertiary)}
+.filterBtn{font-family:var(--font-sans);font-size:.86rem;font-weight:500;border-radius:6px}
+.activeFilterBg{border-radius:6px;box-shadow:none}
+@media(max-width:600px){.section{padding-top:7.5rem}}

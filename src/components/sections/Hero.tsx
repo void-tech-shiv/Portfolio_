@@ -1,76 +1,113 @@
-import { motion } from 'framer-motion';
-import { ArrowUpRight, MoveDown, Layers3, ShieldCheck, BrainCircuit, Mail } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Mail } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
+import { projects } from '../../data/projects';
 import { Avatar3D } from './Avatar3D';
 import styles from './Hero.module.css';
 
-const chapters = [
-  {
-    no:'01 / ENGINEERING', icon:<Layers3 size={19}/>, title:'I design. I build. I ship.',
-    copy:'From ideas to working products, I focus on useful engineering and thoughtful interfaces.',
-    tags:['TypeScript','React','Systems'], link:'/projects', action:'View shipped work'
-  },
-  {
-    no:'02 / INTELLIGENCE', icon:<BrainCircuit size={19}/>, title:'Practical AI, not just prompts.',
-    copy:'I experiment with machine learning and build software that puts data and automation to work.',
-    tags:['AI / ML','Python','Data'], link:'/skills', action:'Explore my stack'
-  },
-  {
-    no:'03 / SECURITY', icon:<ShieldCheck size={19}/>, title:'Build securely. Think critically.',
-    copy:'Security-minded tools, privacy-first workflows and systems that take reliability seriously.',
-    tags:['Security','Architecture','Privacy'], link:'/contact', action:'Work together'
-  }
+const featured = projects.filter(project => ['passcheck', 'pdfkit', 'skilltrack'].includes(project.id));
+const services = [
+  { number: '01', title: 'Business websites', detail: 'Fast, responsive one-page sites with clear services, a contact flow and basic search setup.' },
+  { number: '02', title: 'Developer portfolios', detail: 'Personal sites that make projects, skills and experience easy to explore.' },
+  { number: '03', title: 'Fixes and improvements', detail: 'UI polish, responsive fixes, performance clean-up and deployment help for existing sites.' },
 ];
-export const Hero = () => (
-  <>
-    <section className={styles.journey} id="journey">
-      <div className={styles.copy}>
-        <div className={styles.intro}>
-          <motion.div className={styles.eyebrow} initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.55}}>
-            <span className={styles.pulse} /> OPEN TO INTERNSHIPS & COLLABORATIONS
-          </motion.div>
-          <motion.p className={styles.overline} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.15}}>SOFTWARE ENGINEER IN THE MAKING // INDIA</motion.p>
-          <motion.h1 className={styles.title} initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{duration:.7,delay:.12}}>
-            Building what<br/><em>comes next.</em>
-          </motion.h1>
-          <motion.p className={styles.subtitle} initial={{opacity:0,y:15}} animate={{opacity:1,y:0}} transition={{delay:.3}}>
-            Hey, I'm <strong>Shivanshu Satyajeet.</strong> I build digital experiences, AI-powered tools and security-focused software — with an obsession for turning ideas into things that work.
-          </motion.p>
-          <motion.div className={styles.actions} initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:.42}}>
-            <Link className={styles.primary} to="/projects">EXPLORE MY WORK <ArrowUpRight size={18}/></Link>
-            <Link className={styles.secondary} to="/contact">LET'S CONNECT <Mail size={17}/></Link>
-          </motion.div>
-          <motion.div className={styles.footerLine} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.65}}>
-            <div><span>NOW BUILDING</span><strong>Software • AI • Security</strong></div>
-            <div><span>CURRENT ROLE</span><strong>Technical Head · Force Vega Racing</strong></div>
-          </motion.div>
-          <div className={styles.scrollHint}><MoveDown size={16}/> SCROLL TO EXPLORE THE SYSTEM</div>
+
+export const Hero = () => {
+  const [showExperiment, setShowExperiment] = useState(false);
+
+  return (
+    <>
+      <section className={styles.hero} aria-labelledby="home-title">
+        <div className={styles.heroContent}>
+          <p className={styles.eyebrow}><span className={styles.statusDot} /> SHIVANSHU SATYAJEET <span className={styles.eyebrowDivider}>/</span> SOFTWARE DEVELOPER</p>
+          <h1 id="home-title">Thoughtful websites.<br /><span>Software that works.</span></h1>
+          <p className={styles.lead}>
+            I'm Shivanshu, a B.Tech AI & Data Science student at KL University. I work with React, TypeScript and Python to build websites, practical tools and software projects.
+          </p>
+          <div className={styles.actions}>
+            <Link to="/projects" className={styles.primary}>Explore my projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
+            <a href="mailto:itsupport.shiv@gmail.com?subject=Website%20project%20enquiry" className={styles.secondary}>Discuss a project <ArrowRight size={18} aria-hidden="true" /></a>
+          </div>
+          <div className={styles.facts} aria-label="Quick facts">
+            <div><span>Focus</span><strong>Web development · AI · Security</strong></div>
+            <div><span>Currently</span><strong>Building projects & taking enquiries</strong></div>
+          </div>
         </div>
-        <div className={styles.chapters}>
-          {chapters.map(item=><motion.article key={item.no} className={styles.chapter} initial={{opacity:0,y:40}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.2}} transition={{duration:.55}}>
-            <div className={styles.chapterTop}><span>{item.no}</span><span>{item.icon}</span></div>
-            <h2>{item.title}</h2>
-            <p>{item.copy}</p>
-            <div className={styles.tags}>{item.tags.map(tag=><span key={tag}>{tag}</span>)}</div>
-            <Link className={styles.chapterLink} to={item.link}>{item.action}<ArrowUpRight size={18}/></Link>
-          </motion.article>)}
+        <div className={styles.portraitShell}>
+          <div className={styles.portrait}>
+            <img src="/assets/photos/portrait.png" alt="Portrait of Shivanshu Satyajeet" />
+          </div>
+          <div className={styles.portraitNote}><span>SHIVANSHU / 2026</span><span>INDIA</span></div>
         </div>
-      </div>
-      <aside className={styles.avatarColumn} aria-label="Interactive full-body avatar scene">
-        <Avatar3D />
-        <div className={styles.avatarCaption}><span>SYS.001 / SHIVANSHU</span><span>REACTIVITY: ACTIVE</span></div>
-      </aside>
-    </section>
-    <section className={styles.finalCTA} aria-labelledby="final-cta">
-      <div className={styles.ctaGlow} aria-hidden="true"/>
-      <span className={styles.ctaEyebrow}>NEXT MISSION / YOUR IDEA</span>
-      <h2 id="final-cta">Let's make something<br/><em>extraordinary.</em></h2>
-      <p>Looking for a developer who loves figuring things out? Let's talk.</p>
-      <div className={styles.ctaLinks}>
-        <Link className={styles.primary} to="/contact">START A CONVERSATION <ArrowUpRight size={18}/></Link>
-        <a href="https://github.com/void-tech-shiv" rel="noopener noreferrer" target="_blank" className={styles.secondary}>GITHUB <FaGithub size={18}/></a>
-      </div>
-    </section>
-  </>
-);
+      </section>
+
+      <section className={styles.work} aria-labelledby="selected-work">
+        <div className={styles.sectionIntro}>
+          <div><p className={styles.sectionLabel}>01 / SELECTED WORK</p><h2 id="selected-work">Projects worth exploring.</h2></div>
+          <Link className={styles.textLink} to="/projects">View all projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
+        </div>
+        <div className={styles.projectGrid}>
+          {featured.map(project => (
+            <article className={styles.projectCard} key={project.id}>
+              <div className={styles.projectMedia}>
+                {project.image
+                  ? <img src={project.image} alt={project.title + ' project preview'} loading="lazy" decoding="async" />
+                  : <Code2 size={38} aria-hidden="true" />}
+                <span className={styles.projectIndex}>{project.number}</span>
+              </div>
+              <div className={styles.projectContent}>
+                <p className={styles.projectMeta}>{project.category} <span aria-hidden="true">·</span> {project.status}</p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className={styles.tech}>{project.technologies.slice(0, 3).map(t => <span key={t}>{t}</span>)}</div>
+                <div className={styles.projectActions}>
+                  {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live demo <ArrowUpRight size={16} aria-hidden="true" /></a>}
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source code <FaGithub size={15} aria-hidden="true" /></a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.services} aria-labelledby="what-i-do">
+        <div className={styles.sectionIntro}>
+          <div><p className={styles.sectionLabel}>02 / HOW I CAN HELP</p><h2 id="what-i-do">Simple scope. Solid execution.</h2></div>
+          <p className={styles.sectionAside}>For small businesses, students and teams that need a website or a reliable fix — without unnecessary complexity.</p>
+        </div>
+        <div className={styles.serviceList}>
+          {services.map(service => (
+            <div className={styles.service} key={service.number}>
+              <span className={styles.serviceNumber}>{service.number}</span>
+              <h3>{service.title}</h3>
+              <p>{service.detail}</p>
+              <ArrowDownRight className={styles.serviceArrow} size={20} aria-hidden="true" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.experiment} aria-labelledby="experiment-heading">
+        <div className={styles.experimentCopy}>
+          <p className={styles.sectionLabel}>03 / SIDE PROJECT</p>
+          <h2 id="experiment-heading">An interactive experiment.</h2>
+          <p>I also like building things just to understand how they work. This WebGL character is a small graphics experiment — not a 3D scan of me.</p>
+          <button className={styles.experimentButton} type="button" onClick={() => setShowExperiment(value => !value)} aria-expanded={showExperiment} aria-controls="model-preview">
+            {showExperiment ? 'Close 3D preview' : 'Open 3D preview'} <ArrowUpRight size={16} aria-hidden="true" />
+          </button>
+        </div>
+        {showExperiment && <div className={styles.modelFrame} id="model-preview"><Avatar3D /></div>}
+      </section>
+
+      <section className={styles.contact} aria-labelledby="contact-heading">
+        <div>
+          <p className={styles.sectionLabel}>HAVE SOMETHING IN MIND?</p>
+          <h2 id="contact-heading">Tell me what you're building.</h2>
+          <p>Share a short brief, the timeline and what you need. I'll reply with questions or a suggested next step.</p>
+        </div>
+        <a href="mailto:itsupport.shiv@gmail.com?subject=Let%27s%20work%20together" className={styles.contactLink}>Get in touch <Mail size={19} aria-hidden="true" /></a>
+      </section>
+    </>
+  );
+};
