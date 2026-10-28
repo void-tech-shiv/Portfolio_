@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Github, Mail } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Mail } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa6';
 import { projects } from '../../data/projects';
 import { Avatar3D } from './Avatar3D';
 import styles from './Hero.module.css';
@@ -62,7 +63,7 @@ export const Hero = () => {
                 <div className={styles.tech}>{project.technologies.slice(0, 3).map(t => <span key={t}>{t}</span>)}</div>
                 <div className={styles.projectActions}>
                   {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live demo <ArrowUpRight size={16} aria-hidden="true" /></a>}
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source code <Github size={15} aria-hidden="true" /></a>
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source code <FaGithub size={15} aria-hidden="true" /></a>
                 </div>
               </div>
             </article>
