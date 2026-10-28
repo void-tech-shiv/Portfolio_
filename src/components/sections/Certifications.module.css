@@ -229,3 +229,22 @@
 .cardFooter{display:flex;flex-wrap:wrap;gap:.55rem;}
 .viewAction{display:inline-flex;align-items:center;gap:.35rem;cursor:pointer;min-height:40px;color:var(--color-accent-primary);font:500 .72rem var(--font-mono);padding:.3rem .6rem;border-radius:6px;}
 .viewAction:hover,.viewAction:focus-visible{background:var(--color-accent-primary-dim);}
+
+@media (max-width: 1199px) {
+  .section { padding: 7rem clamp(1rem,3vw,2rem) 4rem; }
+  .container { max-width: 760px; }
+  .grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .vaultHeader { margin-bottom: 1.6rem; padding: 1.1rem; flex-wrap: wrap; gap: .75rem; }
+  .cardInner { padding: 1.15rem; }
+  .imageWrapper { aspect-ratio: 16 / 9; }
+  .certImage { padding: .65rem; }
+  .cardFooter { justify-content: flex-start; column-gap: .7rem; }
+}
+@media (max-width: 600px) {
+  .section { padding: 6.5rem 1rem 3rem; }
+  .vaultHeader h2 { font-size: 1rem; }
+  .vaultStatus { font-size: .7rem; }
+  .imageWrapper { aspect-ratio: 4 / 3; }
+  .cardFooter { gap: .3rem; }
+  .verifiedBadge { flex-basis: 100%; }
+}

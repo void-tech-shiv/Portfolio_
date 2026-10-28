@@ -135,3 +135,20 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 1199px) {
+  .section { padding: 7rem clamp(1rem,3vw,2rem) 3rem; }
+  .container { max-width: 760px; }
+  .timeline { padding-left: 1.2rem; gap: 1.25rem; }
+  .timelineNode { left: -1.2rem; }
+  .header { flex-direction: column; gap: .75rem; margin-bottom: 1.25rem; }
+  .metaInfo { align-items: flex-start; font-size: .8rem; }
+  .role { font-size: 1rem; }
+  .organization { font-size: 1.35rem; }
+}
+@media (max-width: 600px) {
+  .section { padding: 6.5rem 1rem 2rem; }
+  .timeline { padding-left: 1rem; }
+  .timelineNode { left: -1rem; }
+  .description li { font-size: .94rem; }
+}

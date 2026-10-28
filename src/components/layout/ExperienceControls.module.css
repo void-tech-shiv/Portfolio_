@@ -8,3 +8,8 @@
 .controls button { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--color-text-primary); }
 .controls button:hover, .controls button:focus-visible, .controls button[aria-pressed=true] { background: var(--color-accent-primary-dim); color: var(--color-accent-primary); outline-offset: 2px; }
 @media (max-width: 768px) { .controls { left: .8rem; bottom: .8rem; } }
+
+@media (max-width: 1199px) {
+  .controls { left: max(.65rem,env(safe-area-inset-left)); bottom: max(.65rem,env(safe-area-inset-bottom)); padding: .25rem; }
+  .controls button { width: 40px; height: 40px; }
+}

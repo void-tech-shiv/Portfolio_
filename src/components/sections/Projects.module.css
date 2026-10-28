@@ -84,3 +84,17 @@
     grid-column: span 12;
   }
 }
+
+@media (max-width: 1199px) {
+  .section { padding: 7rem clamp(1rem, 3vw, 2rem) 4rem; }
+  .container { max-width: 760px; }
+  .projectWrapper { grid-column: span 12; }
+  .grid { gap: 1.25rem; }
+  .filters { gap: .5rem; margin-bottom: 1.5rem; }
+  .filterBtn { min-height: 42px; padding: .55rem .8rem; font-size: .8rem; }
+  .sectionDesc { font-size: 1.03rem; }
+}
+@media (max-width: 600px) {
+  .section { padding: 6.5rem 1rem 3.5rem; }
+  .projectCount { margin: .6rem 0 0; }
+}

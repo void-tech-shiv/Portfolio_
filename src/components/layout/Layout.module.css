@@ -51,3 +51,9 @@
     inset 0 0 40px rgba(0, 240, 255, 0.03),
     0 0 20px rgba(0, 240, 255, 0.02);
 }
+
+/* A tall emulated mobile viewport previously left an entire empty viewport after short pages. */
+@media (max-width: 1199px) {
+  .mainContent { min-height: 0; }
+  .appFrame { inset: 6px; border-radius: 18px; }
+}
