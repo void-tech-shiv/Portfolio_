@@ -1,8 +1,9 @@
 import { ArrowUpRight, Mail, Send } from 'lucide-react';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6';
 import styles from './Contact.module.css';
 
 const links = [
+  { label: 'WhatsApp', value: '+91 75419 10379', url: 'https://wa.me/917541910379?text=Hi%20Shivanshu%2C%20I%27d%20like%20to%20discuss%20a%20website%20project.', icon: FaWhatsapp },
   { label: 'Email', value: 'itsupport.shiv@gmail.com', url: 'mailto:itsupport.shiv@gmail.com', icon: Mail },
   { label: 'GitHub', value: 'github.com/void-tech-shiv', url: 'https://github.com/void-tech-shiv', icon: FaGithub },
   { label: 'LinkedIn', value: 'Shivanshu Satyajeet', url: 'https://www.linkedin.com/in/shivanshusatyajeet/', icon: FaLinkedinIn },
@@ -15,7 +16,10 @@ export const Contact = () => (
       <p className={styles.label}>CONTACT / PROJECT ENQUIRIES</p>
       <h1 id="contact-title">Let's work on<br /><span>something useful.</span></h1>
       <p className={styles.intro}>Need a website, portfolio or help fixing an existing project? Send me a brief note about what you're working on, your timeline and the main requirements.</p>
-      <a className={styles.primary} href="mailto:itsupport.shiv@gmail.com?subject=Website%20project%20enquiry">Email me about your project <ArrowUpRight size={18} aria-hidden="true" /></a>
+      <div className={styles.contactActions}>
+        <a className={styles.primary} href="https://wa.me/917541910379?text=Hi%20Shivanshu%2C%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <FaWhatsapp size={19} aria-hidden="true" /></a>
+        <a className={styles.emailAction} href="mailto:itsupport.shiv@gmail.com?subject=Website%20project%20enquiry">Email me instead <ArrowUpRight size={18} aria-hidden="true" /></a>
+      </div>
       <div className={styles.details}>
         <div><span>BEST FIRST STEP</span><p>Share the goal, deadline and any reference sites you like.</p></div>
         <div><span>AVAILABLE FOR</span><p>Freelance websites, collaboration and internship opportunities.</p></div>
