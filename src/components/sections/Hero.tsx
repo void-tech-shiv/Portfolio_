@@ -6,7 +6,7 @@ import { projects } from '../../data/projects';
 import { Avatar3D } from './Avatar3D';
 import styles from './Hero.module.css';
 
-const featured = projects.filter(project => ['passcheck', 'pdfkit', 'skilltrack'].includes(project.id));
+const featured = projects.filter(project => ['passcheck', 'pdfkit', 'ai-soc', 'glacia'].includes(project.id));
 const services = [
   { number: '01', title: 'Business websites', detail: 'Fast, responsive one-page sites with clear services, a contact flow and basic search setup.' },
   { number: '02', title: 'Developer portfolios', detail: 'Personal sites that make projects, skills and experience easy to explore.' },
@@ -44,8 +44,8 @@ export const Hero = () => {
 
       <section className={styles.work} aria-labelledby="selected-work">
         <div className={styles.sectionIntro}>
-          <div><p className={styles.sectionLabel}>01 / SELECTED WORK</p><h2 id="selected-work">Projects worth exploring.</h2></div>
-          <Link className={styles.textLink} to="/projects">View all projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
+          <div><p className={styles.sectionLabel}>01 / SELECTED WORK</p><h2 id="selected-work">Selected work. Real progress.</h2></div>
+          <Link className={styles.textLink} to="/projects">Browse all {projects.length} projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
         <div className={styles.projectGrid}>
           {featured.map(project => (
@@ -57,12 +57,13 @@ export const Hero = () => {
                 <span className={styles.projectIndex}>{project.number}</span>
               </div>
               <div className={styles.projectContent}>
-                <p className={styles.projectMeta}>{project.category} <span aria-hidden="true">·</span> {project.status}</p>
+                <p className={styles.projectMeta}>{project.category} <span aria-hidden="true">·</span> <span className={styles.homeStatus} data-stage={project.status}>{project.status === 'PUBLISHED DEMO' ? 'Published demo' : project.status === 'COMPLETED' ? 'Completed' : project.status === 'IN DEVELOPMENT' ? 'In development' : 'Prototype'}</span></p>
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
+                <p className={styles.progressNote}>{project.statusNote}</p>
                 <div className={styles.tech}>{project.technologies.slice(0, 3).map(t => <span key={t}>{t}</span>)}</div>
                 <div className={styles.projectActions}>
-                  {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live demo <ArrowUpRight size={16} aria-hidden="true" /></a>}
+                  {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Open demo <ArrowUpRight size={16} aria-hidden="true" /></a>}
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source code <FaGithub size={15} aria-hidden="true" /></a>
                 </div>
               </div>
