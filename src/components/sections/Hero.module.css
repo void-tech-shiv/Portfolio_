@@ -59,3 +59,14 @@
 @media(max-width:960px){.hero{grid-template-columns:1fr minmax(210px,.55fr);gap:2rem}.hero h1{font-size:clamp(3rem,6vw,4.5rem)}.projectGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.service{grid-template-columns:40px 1fr 1.2fr 20px}}
 @media(max-width:680px){.hero,.work,.services,.experiment,.contact{width:calc(100% - 36px)}.hero{display:flex;flex-direction:column;align-items:stretch;gap:2.5rem;padding:7.5rem 0 3.5rem}.hero h1{font-size:clamp(2.8rem,11vw,4rem)}.eyebrow{font-size:.61rem;gap:.4rem;margin-bottom:1.6rem}.lead{font-size:1rem;margin-top:1.4rem}.actions{margin-top:1.7rem}.primary,.secondary{width:100%}.facts{margin-top:2.3rem}.portraitShell{max-width:400px;width:100%;margin:0 auto}.portrait{aspect-ratio:4/3}.portrait img{object-position:50% 27%}.work,.services{padding:3.5rem 0}.sectionIntro{align-items:flex-start;flex-direction:column;gap:1rem}.projectGrid{grid-template-columns:1fr}.projectMedia{height:200px}.service{grid-template-columns:34px 1fr 22px;gap:1rem;padding:1.35rem 0}.service h3{font-size:1.1rem}.service p{grid-column:2 / span 1;grid-row:2}.serviceArrow{grid-column:3;grid-row:1}.experiment{padding:1.5rem}.modelFrame{height:400px}.contact{margin-top:4rem;margin-bottom:4rem;padding-top:3rem;align-items:flex-start;flex-direction:column;gap:1.4rem}.contactLink{width:100%}}
 @media(prefers-reduced-motion:reduce){.primary,.secondary,.contactLink,.projectMedia img{transition:none}.primary:hover,.secondary:hover,.contactLink:hover,.projectCard:hover img{transform:none}}
+
+
+/* Selected GitHub work: real progress, not marketing claims */
+.projectGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.homeStatus{display:inline-flex;border-radius:5px;padding:.18rem .42rem;border:1px solid var(--color-glass-border-hover);color:var(--color-text-primary);font-family:var(--font-sans);font-size:.7rem;letter-spacing:0;text-transform:none}
+.homeStatus[data-stage="PUBLISHED DEMO"]{color:#b5d8c8;border-color:rgba(144,208,176,.25)}
+.homeStatus[data-stage="IN DEVELOPMENT"]{color:#e0c5a6;border-color:rgba(213,176,129,.25)}
+.homeStatus[data-stage="PROTOTYPE"]{color:#c9b7df}
+.homeStatus[data-stage="COMPLETED"]{color:#bacce0}
+.progressNote{font-size:.78rem!important;line-height:1.6!important;color:var(--color-text-tertiary)!important;margin-top:.85rem}
+@media(max-width:680px){.projectGrid{grid-template-columns:1fr}}
