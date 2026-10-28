@@ -204,3 +204,8 @@
 }
 
 @media(max-width:768px){.heroImageContainer{height:180px;}.modal{height:calc(100dvh - 1rem);}.body{gap:1.25rem;}}
+
+
+.projectStage{margin:1rem 0 1.25rem;padding:.95rem 1.1rem;border:1px solid var(--color-glass-border);border-radius:8px;background:var(--color-surface)}
+.projectStage strong{display:block;margin-bottom:.4rem;font-size:.86rem;color:var(--color-accent-primary);font-weight:600}
+.projectStage p{font-size:.83rem;color:var(--color-text-secondary);line-height:1.6}

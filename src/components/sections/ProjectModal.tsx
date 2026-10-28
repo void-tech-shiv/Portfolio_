@@ -27,6 +27,7 @@ export const ProjectModal = ({project,onClose}:Props) => {
   return <div className={styles.overlay} onMouseDown={onClose}><motion.div ref={dialog} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" className={styles.modal} onMouseDown={e=>e.stopPropagation()} initial={{opacity:0,y:25,scale:.97}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:15,scale:.98}} transition={{duration:.22}}>
     <div className={styles.header}><div className={styles.headerTop}><span className={styles.number}>PROJECT / {project.number}</span><button type="button" ref={close} className={styles.closeBtn} onClick={onClose} aria-label="Close project details"><X size={24}/></button></div>
       <h2 id="project-dialog-title" className={styles.title}>{project.title}</h2>
+      <div className={styles.projectStage}><strong>{project.status === 'PUBLISHED DEMO' ? 'Published demo' : project.status === 'IN DEVELOPMENT' ? 'In development' : project.status === 'COMPLETED' ? 'Completed' : 'Prototype'}</strong><p>{project.statusNote}</p></div>
       <div className={styles.stack}>{project.technologies.map(t=><span className={styles.tech} key={t}>{t}</span>)}</div>
     </div>
     {project.image&&<div className={styles.heroImageContainer}><img loading="lazy" decoding="async" src={project.image} alt={project.title+' project screenshot'} className={styles.heroImage}/><div className={styles.heroOverlay}/></div>}
@@ -36,6 +37,6 @@ export const ProjectModal = ({project,onClose}:Props) => {
       <div className={styles.section}><h3>ARCHITECTURE</h3><p>{project.architecture}</p></div>
     </div>
     <div className={styles.footer}>{project.githubUrl&&<GlassButton href={project.githubUrl} variant="secondary" icon={<GitBranch size={18}/>}>GITHUB REPO</GlassButton>}
-      {project.liveUrl&&<GlassButton href={project.liveUrl} icon={<ExternalLink size={18}/>}>LIVE DEMO</GlassButton>}</div>
+      {project.liveUrl&&<GlassButton href={project.liveUrl} icon={<ExternalLink size={18}/>}>OPEN DEMO</GlassButton>}</div>
   </motion.div></div>;
 };
