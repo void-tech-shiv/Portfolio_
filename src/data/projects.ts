@@ -17,6 +17,7 @@ export interface Project {
   features: string[];
   architecture: string;
   image?: string;
+  imageKind?: 'illustration';
 }
 // Statuses are editorial project milestones, not live health checks. Review against GitHub before changing.
 export const projects: Project[] = [
@@ -91,6 +92,8 @@ export const projects: Project[] = [
     ],
     "status": "IN DEVELOPMENT",
     "statusNote": "Core ingestion, detection and correlation phases are documented as complete. AI investigator and advanced dashboard remain planned.",
+    "image": "/assets/projects/ai-soc.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/AI-SOC",
     "features": [
       "Synthetic security event ingestion",
@@ -116,6 +119,8 @@ export const projects: Project[] = [
     ],
     "status": "IN DEVELOPMENT",
     "statusNote": "Experimental developer builds. Real-device QA and feature-parity work are still in progress; not a store-ready release.",
+    "image": "/assets/projects/glacia.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/Telegram",
     "features": [
       "Custom dark and light chat themes",
@@ -141,6 +146,8 @@ export const projects: Project[] = [
     ],
     "status": "PROTOTYPE",
     "statusNote": "Research/demo prototype with simulated registry checks; not an official identity-verification product.",
+    "image": "/assets/projects/docverify.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/AI-Based-Fake-Identity-Document-Screening-System-SIH26188",
     "features": [
       "Document text and MRZ field extraction",
@@ -193,6 +200,8 @@ export const projects: Project[] = [
     ],
     "status": "IN DEVELOPMENT",
     "statusNote": "Web, API and mobile source are present; deployment, mobile QA and production security work remain.",
+    "image": "/assets/projects/ai-slang.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/AI-slang",
     "features": [
       "Hinglish, Telugu, Hindi and English tone adaptation",
@@ -218,6 +227,8 @@ export const projects: Project[] = [
     ],
     "status": "PROTOTYPE",
     "statusNote": "Integration preview only. Authenticated ERP login and attendance flows still need student-owner verification; demo records are fictional.",
+    "image": "/assets/projects/klu-bza.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/KLU-BZA",
     "features": [
       "Student login/CAPTCHA integration preview",
@@ -243,6 +254,8 @@ export const projects: Project[] = [
     ],
     "status": "IN DEVELOPMENT",
     "statusNote": "Repository contains payment and companion flows; end-to-end live billing, admin access and rollout are not verified.",
+    "image": "/assets/projects/leetcode-bot.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/leetcode_bot",
     "features": [
       "Role-based accounts and subscription billing logic",
@@ -268,6 +281,8 @@ export const projects: Project[] = [
     ],
     "status": "COMPLETED",
     "statusNote": "Core command-line implementation and Ubuntu build instructions are documented; no independently verified release binary.",
+    "image": "/assets/projects/shellforge.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/-shellforge-",
     "features": [
       "Command tokenization, parsing and expansion",
@@ -293,6 +308,8 @@ export const projects: Project[] = [
     ],
     "status": "COMPLETED",
     "statusNote": "Documented CLI implementation with build/run instructions; hosted web version and complete test coverage are not verified.",
+    "image": "/assets/projects/sportspulse.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/SPORTSPULSE",
     "features": [
       "Player, team and match records",
@@ -318,6 +335,8 @@ export const projects: Project[] = [
     ],
     "status": "IN DEVELOPMENT",
     "statusNote": "Payment, admin and license workflows are in the repository; live checkout and production readiness are not confirmed.",
+    "image": "/assets/projects/tools-store.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/shiv-tools-store",
     "features": [
       "Product catalog and administrator workflows",
@@ -343,6 +362,8 @@ export const projects: Project[] = [
     ],
     "status": "PROTOTYPE",
     "statusNote": "Local assessment and lab workflow is documented; no public hosted scanner or independent deployment verification.",
+    "image": "/assets/projects/cybershield.svg",
+    "imageKind": "illustration",
     "githubUrl": "https://github.com/void-tech-shiv/CyberShield",
     "features": [
       "OWASP ZAP-assisted active scanning",

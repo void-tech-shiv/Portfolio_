@@ -52,9 +52,10 @@ export const Hero = () => {
             <article className={styles.projectCard} key={project.id}>
               <div className={styles.projectMedia}>
                 {project.image
-                  ? <img src={project.image} alt={project.title + ' project preview'} loading="lazy" decoding="async" />
+                  ? <img src={project.image} alt={project.title + (project.imageKind === 'illustration' ? ' illustrated project preview' : ' project preview')} loading="lazy" decoding="async" />
                   : <Code2 size={38} aria-hidden="true" />}
                 <span className={styles.projectIndex}>{project.number}</span>
+                {project.imageKind === 'illustration' && <span className={styles.illustrativeLabel}>Illustrative preview</span>}
               </div>
               <div className={styles.projectContent}>
                 <p className={styles.projectMeta}>{project.category} <span aria-hidden="true">·</span> <span className={styles.homeStatus} data-stage={project.status}>{project.status === 'PUBLISHED DEMO' ? 'Published demo' : project.status === 'COMPLETED' ? 'Completed' : project.status === 'IN DEVELOPMENT' ? 'In development' : 'Prototype'}</span></p>

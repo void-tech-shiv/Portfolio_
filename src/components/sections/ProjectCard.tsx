@@ -14,7 +14,7 @@ const stageLabel = {
 export const ProjectCard = ({ project, onClick }: Props) => (
   <motion.article layout initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} exit={{opacity:0,y:8}} transition={{duration:.24}} className={styles.card}>
     {project.image ?
-      <div className={styles.imageContainer}><img src={project.image} alt={project.title + ' project preview'} className={styles.image} loading="lazy" decoding="async"/><div className={styles.imageOverlay}/></div>
+      <div className={styles.imageContainer}><img src={project.image} alt={project.title + (project.imageKind === 'illustration' ? ' illustrated project preview' : ' project preview')} className={styles.image} loading="lazy" decoding="async"/><div className={styles.imageOverlay}/>{project.imageKind === 'illustration' && <span className={styles.previewLabel}>Illustrative preview</span>}</div>
       : <div className={styles.imagePlaceholder}><span className={styles.placeholderLetter} aria-hidden="true">{project.title.split(' ').map(word=>word.charAt(0)).slice(0,2).join('')}</span><span className={styles.placeholderType}>{project.category}</span></div>}
     <div className={styles.content}>
       <div className={styles.header}>

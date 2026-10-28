@@ -30,7 +30,7 @@ export const ProjectModal = ({project,onClose}:Props) => {
       <div className={styles.projectStage}><strong>{project.status === 'PUBLISHED DEMO' ? 'Published demo' : project.status === 'IN DEVELOPMENT' ? 'In development' : project.status === 'COMPLETED' ? 'Completed' : 'Prototype'}</strong><p>{project.statusNote}</p></div>
       <div className={styles.stack}>{project.technologies.map(t=><span className={styles.tech} key={t}>{t}</span>)}</div>
     </div>
-    {project.image&&<div className={styles.heroImageContainer}><img loading="lazy" decoding="async" src={project.image} alt={project.title+' project screenshot'} className={styles.heroImage}/><div className={styles.heroOverlay}/></div>}
+    {project.image&&<div className={styles.heroImageContainer}><img loading="lazy" decoding="async" src={project.image} alt={project.title+(project.imageKind === 'illustration' ? ' illustrative project preview' : ' project preview')} className={styles.heroImage}/><div className={styles.heroOverlay}/></div>}
     <div className={styles.body}><div className={styles.section}><h3>OVERVIEW</h3><p>{project.overview}</p></div>
       <div className={styles.section}><h3>KEY FEATURES</h3><ul className={styles.list}>{project.features.map(f=><li key={f}>{f}</li>)}</ul></div>
       <div className={styles.grid}><div className={styles.section}><h3>PROBLEM</h3><p>{project.problem}</p></div><div className={styles.section}><h3>APPROACH</h3><p>{project.approach}</p></div></div>
