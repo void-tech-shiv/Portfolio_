@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Mail } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa6';
+import { ArrowDownRight, ArrowUpRight, Code2 } from 'lucide-react';
+import { FaGithub, FaWhatsapp } from 'react-icons/fa6';
 import { projects } from '../../data/projects';
 import { Avatar3D } from './Avatar3D';
 import styles from './Hero.module.css';
@@ -27,7 +27,7 @@ export const Hero = () => {
           </p>
           <div className={styles.actions}>
             <Link to="/projects" className={styles.primary}>Explore my projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
-            <a href="mailto:itsupport.shiv@gmail.com?subject=Website%20project%20enquiry" className={styles.secondary}>Discuss a project <ArrowRight size={18} aria-hidden="true" /></a>
+            <a href="https://wa.me/917541910379?text=Hi%20Shivanshu%2C%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer" className={styles.secondary}>Discuss on WhatsApp <FaWhatsapp size={18} aria-hidden="true" /></a>
           </div>
           <div className={styles.facts} aria-label="Quick facts">
             <div><span>Focus</span><strong>Web development · AI · Security</strong></div>
@@ -106,7 +106,7 @@ export const Hero = () => {
           <h2 id="contact-heading">Tell me what you're building.</h2>
           <p>Share a short brief, the timeline and what you need. I'll reply with questions or a suggested next step.</p>
         </div>
-        <a href="mailto:itsupport.shiv@gmail.com?subject=Let%27s%20work%20together" className={styles.contactLink}>Get in touch <Mail size={19} aria-hidden="true" /></a>
+        <a href="https://wa.me/917541910379?text=Hi%20Shivanshu%2C%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer" className={styles.contactLink}>Chat on WhatsApp <FaWhatsapp size={19} aria-hidden="true" /></a>
       </section>
     </>
   );
