@@ -226,3 +226,20 @@
 .status{background:transparent;border-color:var(--color-glass-border-hover)}
 .primaryBtn{background:var(--color-surface);border-color:var(--color-glass-border-hover);color:var(--color-text-primary)}
 .primaryBtn:hover{background:var(--color-surface-hover);border-color:var(--color-text-secondary);color:var(--color-text-primary)}
+
+
+/* Clear project stage without loud badge colors */
+.header{margin-bottom:.85rem;gap:.65rem;align-items:flex-start}
+.status{display:inline-flex;align-items:center;gap:.4rem;flex-shrink:0;border-radius:6px;padding:.32rem .5rem;letter-spacing:0;font:500 .68rem var(--font-sans);white-space:nowrap;color:var(--color-text-secondary)}
+.statusDot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor}
+.status[data-stage="PUBLISHED DEMO"]{color:#b5d8c8;border-color:rgba(144,208,176,.26);background:rgba(93,175,128,.08)}
+.status[data-stage="COMPLETED"]{color:#bacce0;border-color:rgba(156,184,214,.25);background:rgba(130,163,192,.08)}
+.status[data-stage="IN DEVELOPMENT"]{color:#e0c5a6;border-color:rgba(213,176,129,.25);background:rgba(205,150,76,.07)}
+.status[data-stage="PROTOTYPE"]{color:#c9b7df;border-color:rgba(194,161,219,.22);background:rgba(164,124,200,.07)}
+.statusDescription{font-size:.78rem;line-height:1.6;color:var(--color-text-tertiary);border-top:1px solid var(--color-glass-border);padding-top:.9rem;margin-top:.3rem;min-height:74px}
+.statusDescription strong{color:var(--color-text-secondary);font-weight:500}
+.imagePlaceholder{background:linear-gradient(135deg,#263443,#1a222b);display:flex;justify-content:center;align-items:center}
+.placeholderLetter{font-size:3.6rem;color:rgba(227,238,244,.18);font-family:var(--font-sans);font-weight:700;letter-spacing:-.07em}
+.placeholderType{position:absolute;bottom:.85rem;left:1rem;font:.65rem var(--font-mono);color:rgba(227,238,244,.66);letter-spacing:.09em}
+.actions{margin-top:.6rem}
+@media(max-width:450px){.header{flex-wrap:wrap}.statusDescription{min-height:0}}
