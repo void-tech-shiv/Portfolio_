@@ -229,6 +229,7 @@
 
 
 /* Clear project stage without loud badge colors */
+.previewLabel{position:absolute;right:.75rem;bottom:.75rem;z-index:2;padding:.3rem .5rem;border-radius:5px;background:#0c1520dd;border:1px solid #b7cad63b;font:500 .62rem var(--font-sans);color:#c6d5e1;letter-spacing:.02em;backdrop-filter:blur(6px)}
 .header{margin-bottom:.85rem;gap:.65rem;align-items:flex-start}
 .status{display:inline-flex;align-items:center;gap:.4rem;flex-shrink:0;border-radius:6px;padding:.32rem .5rem;letter-spacing:0;font:500 .68rem var(--font-sans);white-space:nowrap;color:var(--color-text-secondary)}
 .statusDot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor}
