@@ -213,3 +213,16 @@
   .title { font-size: 1.9rem; }
   .imageContainer,.imagePlaceholder { height: 185px; }
 }
+
+
+/* Professional editorial treatment for project case-study cards */
+.card{border-radius:12px;background:var(--color-bg-secondary);box-shadow:none}
+.card:hover{transform:translateY(-2px);border-color:var(--color-glass-border-hover);box-shadow:0 14px 28px rgba(0,0,0,.12)}
+.image{filter:none}
+.card:hover .image{filter:none;transform:scale(1.025)}
+.imageOverlay{background:linear-gradient(to bottom,transparent 75%,rgba(0,0,0,.14))}
+.scanline{display:none}
+.title{font-family:var(--font-sans);font-size:1.4rem;letter-spacing:-.035em;font-weight:600}
+.status{background:transparent;border-color:var(--color-glass-border-hover)}
+.primaryBtn{background:var(--color-surface);border-color:var(--color-glass-border-hover);color:var(--color-text-primary)}
+.primaryBtn:hover{background:var(--color-surface-hover);border-color:var(--color-text-secondary);color:var(--color-text-primary)}
